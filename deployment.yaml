@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: spring-boot-watson-mvn
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: spring-boot-watson-mvn
+        tier: display
+    spec:
+      containers:
+        - image: ragudiko/spring-boot-watson-mvn
+          name: spring-boot-watson-mvn
+          #image: gcr.io/Pipelines/nginx:1.7.9
+          imagePullPolicy: Always
+          ports:
+          - name: http
+            containerPort: 8080
